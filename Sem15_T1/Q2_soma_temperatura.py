@@ -22,6 +22,7 @@ def soma_temp(t1, t2):
     else:
         soma = temp1 + temp2
     
+    
     return (soma, escala2)
 
 def main():

@@ -16,6 +16,22 @@ def carrega_cidades():
     arquivo.close()
     return resultado
 
+def populacao_maior (pop):
+    cidades = carrega_cidades()
 
-cidades = carrega_cidades()
-print(cidades[:3] + cidades[-2:])
+    for i in range (len(cidades)):
+        municipio = cidades[i]
+        if municipio[5] > pop:
+           print(f'IBGE: {municipio[1]} - {municipio[2]}({municipio[0]}) - POPULAÇÃO: {municipio[5]}')
+
+def main():
+    populacao = int(input('População: '))
+
+    print (f'CIDADES COM MAIS DE {populacao} HABITANTES:')
+    cidades_pop_maior = populacao_maior(populacao)
+    
+    #cidades = carrega_cidades()
+    #print(cidades[:3] + cidades[-2:])
+    
+if __name__=='__main__':
+    main()
