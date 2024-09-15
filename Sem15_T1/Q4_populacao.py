@@ -28,7 +28,7 @@ def main():
     populacao = int(input('População: '))
 
     print (f'CIDADES COM MAIS DE {populacao} HABITANTES:')
-    cidades_pop_maior = populacao_maior(populacao)
+    populacao_maior(populacao)
     
     #cidades = carrega_cidades()
     #print(cidades[:3] + cidades[-2:])

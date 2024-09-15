@@ -1,9 +1,10 @@
-# Leia um dia e um mês como números inteiros distintos e informe as cidades que fazem aniversário nessa data.
-# Veja o exemplo para o dia 9 e mês 2:
-# CIDADES QUE FAZEM ANIVERSÁRIO EM 9 DE FEVEREIRO:
-# São Miguel do Passa Quatro(GO)
-# Centralina(MG)
-# Itaporanga(PB)
+# Leia um mês e uma população. Mostre as cidades com população maior que o valor lido fazem aniversário no mês informado.
+# Veja o exemplo para o mês com valor 4 e 50000 para a população:
+# CIDADES COM MAIS DE 50000 HABITANTES E ANIVERSÁRIO EM ABRIL:
+# Penedo(AL) tem 59020 habitantes e faz aniversário em 12 de abril.
+# Itacoatiara(AM) tem 84676 habitantes e faz aniversário em 25 de abril.
+# Araci(BA) tem 51912 habitantes e faz aniversário em 7 de abril.
+# Fortaleza(CE) tem 2431415 habitantes e faz aniversário em 13 de abril.
 
 def nome_mes(mes):
     if mes == 1:
@@ -30,7 +31,7 @@ def nome_mes(mes):
         return 'NOVEMBRO'
     elif mes ==12:
         return 'DEZEMBRO'
-        
+    
 def carrega_cidades():
     resultado = []
     with open('cidades.csv', 'r', encoding='utf-8') as arquivo:
@@ -42,21 +43,23 @@ def carrega_cidades():
     arquivo.close()
     return resultado
 
-def aniversario(dia, mes):
+def populacao_maior (mes, pop):
     cidades = carrega_cidades()
-   # aniversario_cidades = cidades [0], cidades [2], cidades[3], cidades[4]
+
     for i in range (len(cidades)):
         municipio = cidades[i]
-        if dia == municipio[3] and mes == municipio[4]:
-            print (f'{municipio[2]}({municipio[0]})')
-        
+        if municipio[5] > pop and municipio[4]==mes:
+            mes_extenso = nome_mes(mes).lower()
+            print(f'{municipio[2]}({municipio[0]}) tem {municipio[5]} habitantes e faz aniversário em {municipio[3]} de {mes_extenso}.')
+
 def main():
-    dia = int(input())
     mes = int(input())
     mes_extenso = nome_mes(mes)
-    
-    print (f'CIDADES QUE FAZEM ANIVERSÁRIO EM {dia} DE {mes_extenso}:')
-    aniversario(dia, mes)
+    populacao = int(input())
 
-if __name__ == '__main__':
+    print (f'CIDADES COM MAIS DE {populacao} HABITANTES E ANIVERSÁRIO EM {mes_extenso}:')
+    populacao_maior(mes, populacao)
+
+
+if __name__=='__main__':
     main()

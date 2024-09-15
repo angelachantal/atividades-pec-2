@@ -45,19 +45,18 @@ def carrega_cidades():
 def aniversario(dia, mes):
     cidades = carrega_cidades()
    # aniversario_cidades = cidades [0], cidades [2], cidades[3], cidades[4]
-    for linha in range (len(cidades)):
-        if dia == cidades[3] and mes == cidades[4]:
-            return f'{cidades[2]}({cidades[0]})'
+    for i in range (len(cidades)):
+        municipio = cidades[i]
+        if dia == municipio[3] and mes == municipio[4]:
+            print (f'{municipio[2]}({municipio[0]})')
         
 def main():
     dia = int(input('Dia: '))
     mes = int(input('Mês: '))
-    mes = nome_mes(mes)
+    mes_extenso = nome_mes(mes)
     
-    print (f'CIDADES QUE FAZEM ANIVERSÁRIO EM {dia} DE {mes}:')
-    print (aniversario(dia, mes))
-    #cidades = carrega_cidades()
-    #print(cidades[:3] + cidades[-2:])
+    print (f'CIDADES QUE FAZEM ANIVERSÁRIO EM {dia} DE {mes_extenso}:')
+    aniversario(dia, mes)
 
 if __name__ == '__main__':
     main()

@@ -6,6 +6,32 @@
 # Araci(BA) tem 51912 habitantes e faz aniversário em 7 de abril.
 # Fortaleza(CE) tem 2431415 habitantes e faz aniversário em 13 de abril.
 
+def nome_mes(mes):
+    if mes == 1:
+        return 'JANEIRO'
+    elif mes == 2:
+        return 'FEVEREIRO'
+    elif mes == 3:
+        return 'MARÇO'
+    elif mes == 4:
+        return 'ABRIL'
+    elif mes == 5:
+        return 'MAIO'
+    elif mes == 6:
+        return 'JUNHO'
+    elif mes == 7:
+        return 'JULHO'
+    elif mes == 8:
+        return 'AGOSTO'
+    elif mes == 9:
+        return 'SETEMBRO'
+    elif mes == 10:
+        return 'OUTUBRO'
+    elif mes == 11:
+        return 'NOVEMBRO'
+    elif mes ==12:
+        return 'DEZEMBRO'
+    
 def carrega_cidades():
     resultado = []
     with open('cidades.csv', 'r', encoding='utf-8') as arquivo:
@@ -17,6 +43,23 @@ def carrega_cidades():
     arquivo.close()
     return resultado
 
+def populacao_maior (mes, pop):
+    cidades = carrega_cidades()
 
-cidades = carrega_cidades()
-print(cidades[:3] + cidades[-2:])
+    for i in range (len(cidades)):
+        municipio = cidades[i]
+        if municipio[5] > pop and municipio[4]==mes:
+            mes_extenso = nome_mes(mes).lower()
+            print(f'{municipio[2]}({municipio[0]}) tem {municipio[5]} habitantes e faz aniversário em {municipio[3]} de {mes_extenso}.')
+
+def main():
+    mes = int(input('Mês: '))
+    mes_extenso = nome_mes(mes)
+    populacao = int(input('População: '))
+
+    print (f'CIDADES COM MAIS DE {populacao} HABITANTES E ANIVERSÁRIO EM {mes_extenso}:')
+    populacao_maior(mes, populacao)
+
+
+if __name__=='__main__':
+    main()
